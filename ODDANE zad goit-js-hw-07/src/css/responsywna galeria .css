@@ -1,0 +1,72 @@
+/// Oba podejścia - wykorzystanie flexboxa i grida - są odpowiednie do tworzenia responsywnych galerii, jednak wybór zależy głównie od preferencji projektanta oraz od specyficznych wymagań projektu.
+
+Grid może być lepszy, jeśli potrzebujemy bardziej zaawansowanej kontroli nad rozmieszczeniem elementów w siatce (np. gdy chcemy, aby niektóre elementy były większe lub mniejsze niż pozostałe). Z kolei flexbox jest dobrym wyborem, jeśli chcemy, aby elementy były ułożone jedna obok drugiej w linii (np. jak w przypadku nawigacji).
+
+W przypadku galerii oba podejścia mają swoje zalety i wady, więc warto rozważyć obie opcje i wybrać tę, która najlepiej odpowiada specyfice projektu.
+
+
+
+
+/// zastosowanie grid
+
+/* Selektor klasy dla całej galerii */
+.grid-gallery {
+  display: grid; /* Ustawienie rodzaju layoutu na grid */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Ustawienie kolumn siatki (grid) - tutaj użyto funkcji repeat w połączeniu z auto-fit, która dostosuje ilość kolumn w zależności od szerokości ekranu, oraz minmax, która ustawia minimalną szerokość na 300px, a maksymalną na 1fr (czyli automatyczne dostosowanie do dostępnej przestrzeni) */
+  grid-gap: 20px; /* Odstęp między elementami galerii */
+}
+
+/* Selektor dla elementu listy */
+.grid-gallery li {
+  list-style: none; /* Usunięcie stylu punktów dla listy */
+  overflow: hidden; /* Ukrycie elementów, które nie mieszczą się w obrębie określonego rozmiaru */
+}
+
+/* Selektor dla obrazka w elemencie listy */
+.grid-gallery img {
+  width: 100%; /* Ustawienie szerokości obrazka na 100% dla dopasowania do określonego rozmiaru elementu */
+  height: 100%; /* Ustawienie wysokości obrazka na 100% dla dopasowania do określonego rozmiaru elementu */
+  object-fit: cover; /* Dopasowanie obrazka do rozmiaru elementu przy zachowaniu proporcji, a następnie przycięcie niepotrzebnych fragmentów */
+  transition: transform 0.3s ease-in-out; /* Animacja przejścia przy zmianie właściwości transform */
+}
+
+/* Selektor dla obrazka podczas najechania myszą */
+.grid-gallery img:hover {
+  transform: scale(
+    1.1
+  ); /* Powiększenie obrazka o 10% w stosunku do jego pierwotnego rozmiaru przy najechaniu myszą */
+}
+
+////////// Zastosowanie flexboxa pozwala na elastyczne dostosowanie elementów galerii w zależności od dostępnej przestrzeni.
+
+/* Selektor klasy dla całej galerii */
+.flex-gallery {
+  display: flex; /* Ustawienie rodzaju layoutu na flexbox */
+  flex-wrap: wrap; /* Ustawienie zawijania wierszy */
+  justify-content: center; /* Wyrównanie elementów wzdłuż osi X */
+  align-items: center; /* Wyrównanie elementów wzdłuż osi Y */
+}
+
+/* Selektor dla elementu listy */
+.flex-gallery li {
+  list-style: none; /* Usunięcie stylu punktów dla listy */
+  margin: 10px; /* Margines między elementami */
+}
+
+/* Selektor dla obrazka w elemencie listy */
+.flex-gallery img {
+  width: 100%; /* Ustawienie szerokości obrazka na 100% dla dopasowania do określonego rozmiaru elementu */
+  height: 100%; /* Ustawienie wysokości obrazka na 100% dla dopasowania do określonego rozmiaru elementu */
+  object-fit: cover; /* Dopasowanie obrazka do rozmiaru elementu przy zachowaniu proporcji, a następnie przycięcie niepotrzebnych fragmentów */
+  transition: transform 0.3s ease-in-out; /* Animacja przejścia przy zmianie właściwości transform */
+}
+
+/* Selektor dla obrazka podczas najechania myszą */
+.flex-gallery img:hover {
+  transform: scale(
+    1.1
+  ); /* Powiększenie obrazka o 10% w stosunku do jego pierwotnego rozmiaru przy najechaniu myszą */
+}
